@@ -94,6 +94,6 @@ modules:
 
 clean::
 	$(RM) $(CLEANMOD) *.o *.ko *.mod.c Module*.symvers Module.markers modules.order
-	$(RM) -R .tmp* *~
+	$(RM) -R .tmp*
 
 endif

@@ -25,13 +25,23 @@ tjr3 * jr3;
 jr3_force_array scale;
 jr3_six_axis_array force;
 
-int main(void)
+int main(int argc, char **argv)
 {
 	int err = 0;
 	int i = 0, c = 0;
 	float tmp[6];
+	int samples = 10;
 
-	jr3 = jr3_init(JR3_DEVICE_NAME);
+	if( argc > 1){
+		printf("Openning %s\n", argv[1]);
+		jr3 = jr3_init(argv[1]);
+	}
+	else
+		jr3 = jr3_init("jr30");
+
+	if( argc > 2){
+		samples = atoi(argv[2]);
+	}
 
 	err = jr3_open(jr3);
 
@@ -83,8 +93,8 @@ int main(void)
 			*/
 
 		sleep(1);
-		//++c;
-	}while(c < 10);
+		++c;
+	}while(c < samples);
 
 
 
